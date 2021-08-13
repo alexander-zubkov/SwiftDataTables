@@ -37,7 +37,7 @@ class DataCell: UICollectionViewCell {
             dataLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Properties.verticalMargin),
             dataLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Properties.verticalMargin),
             dataLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Properties.horizontalMargin),
-            dataLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Properties.horizontalMargin),
+            dataLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Properties.horizontalMargin),
         ])
         
         let bottomLine = CALayer()

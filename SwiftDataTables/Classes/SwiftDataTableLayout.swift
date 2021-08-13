@@ -42,7 +42,7 @@ class SwiftDataTableLayout: UICollectionViewFlowLayout {
         guard self.cache.isEmpty else {
             return
         }
-        let date = Date()
+//        let date = Date()
         self.dataTable.calculateColumnWidths()
         var xOffsets = [CGFloat]()
         var yOffsets = [CGFloat]()
@@ -56,7 +56,7 @@ class SwiftDataTableLayout: UICollectionViewFlowLayout {
         }
         
         //Reduces the computation by calculating the height offset against one column
-        let defaultUpperHeight = /*self.dataTable.heightForSearchView() + */self.dataTable.heightForSectionHeader()
+        let defaultUpperHeight = self.dataTable.heightForSectionHeader() / 2
         
         var counter = 0
         for row in Array(0..<self.dataTable.numberOfRows()){

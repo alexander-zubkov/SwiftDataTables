@@ -44,6 +44,8 @@ public class SwiftDataTable: UIView {
     var options: DataTableConfiguration
     
     //MARK: - Private Properties
+    private var currentRow: Int? = nil
+    
     var currentRowViewModels: DataTableViewModelContent {
         get {
             return self.searchRowViewModels
@@ -426,6 +428,10 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
         else {
             cell.contentView.backgroundColor = delegate?.dataTable?(self, unhighlightedColorForRowIndex: indexPath.item) ?? self.options.unhighlightedAlternatingRowColors[indexPath.section % self.options.unhighlightedAlternatingRowColors.count]
         }
+        
+        if currentRow == indexPath.section {
+            cell.contentView.backgroundColor = .lightGray
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -441,6 +447,14 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectItem?(self, indexPath: indexPath)
+        
+        if let row = currentRow, row == indexPath.section {
+            currentRow = nil
+        } else {
+            currentRow = indexPath.section
+        }
+        
+        self.update()
     }
     
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

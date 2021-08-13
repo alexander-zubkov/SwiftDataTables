@@ -324,7 +324,7 @@ public extension SwiftDataTable {
         self.headerViewModels = Array(0..<(dataStructure.headerTitles.count)).map {
             let headerViewModel = DataHeaderFooterViewModel(
                 data: dataStructure.headerTitles[$0],
-                sortType: dataStructure.columnHeaderSortType(for: $0)
+                sortType: manualSort() ? dataStructure.columnHeaderSortType(for: $0) : .hidden
             )
             headerViewModel.configure(dataTable: self, columnIndex: $0)
             return headerViewModel
@@ -545,6 +545,10 @@ extension SwiftDataTable {
     }
     
     func didTapColumn(index: IndexPath) {
+        if !manualSort() {
+            return
+        }
+        
         defer {
             self.update()
         }
@@ -736,6 +740,10 @@ extension SwiftDataTable {
     
     func fixedColumns() -> DataTableFixedColumnType? {
         return delegate?.fixedColumns?(for: self) ?? self.options.fixedColumns
+    }
+    
+    func manualSort() -> Bool {
+        return delegate?.manualSort?(for: self) ?? self.options.manualSort
     }
     
     func shouldSupportRightToLeftInterfaceDirection() -> Bool {

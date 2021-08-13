@@ -19,9 +19,8 @@ class DataHeaderFooter: UICollectionReusableView {
         static let labelWidthConstant: CGFloat = 20
         static let imageViewWidthConstant: CGFloat = 20
         static let imageViewAspectRatio: CGFloat = 0.75
-
-        
     }
+    
     let titleLabel = UILabel()
     let sortingImageView = UIImageView()
 
@@ -50,6 +49,17 @@ class DataHeaderFooter: UICollectionReusableView {
         titleLabel.font = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .heavy)
         addSubview(titleLabel)
         addSubview(sortingImageView)
+        
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
+        bottomLine.backgroundColor = UIColor.gray.cgColor
+        layer.addSublayer(bottomLine)
+        
+        let bottomRight = CALayer()
+        bottomRight.frame = CGRect(x: self.frame.size.width - 1, y: 0, width: 1, height: self.frame.size.height)
+        bottomRight.backgroundColor = UIColor.gray.cgColor
+        layer.addSublayer(bottomRight)
+        
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(DataHeaderFooter.didTapView))
         addGestureRecognizer(tapGesture)
     }
@@ -76,7 +86,8 @@ class DataHeaderFooter: UICollectionReusableView {
         self.sortingImageView.tintColor = viewModel.tintColorForSortingElement
         self.backgroundColor = .white
     }
-    @objc func didTapView(){
+    
+    @objc func didTapView() {
         self.didTapEvent?()
     }
 }

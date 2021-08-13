@@ -60,6 +60,13 @@ public protocol SwiftDataTableDataSource: AnyObject {
     ///   - indexPath: the index path of the row deselected
     @objc optional func didDeselectItem(_ dataTable: SwiftDataTable, indexPath: IndexPath)
     
+    /// End Displaying cell
+    ///
+    /// - Parameters:
+    ///   - dataTable: SwiftDataTable
+    ///   - indexPath: the index path of the end displaying cell
+    @objc optional func didEndDisplaying(_dataTable: SwiftDataTable, indexPath: IndexPath)
+    
     /// Specify custom heights for specific rows. A row height of 0 is valid and will be used.
     ///
     /// - Parameters:

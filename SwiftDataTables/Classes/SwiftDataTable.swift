@@ -460,6 +460,10 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         delegate?.didDeselectItem?(self, indexPath: indexPath)
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        delegate?.didEndDisplaying?(_dataTable: self, indexPath: indexPath)
+    }
 }
 
 //MARK: - Swift Data Table Delegate

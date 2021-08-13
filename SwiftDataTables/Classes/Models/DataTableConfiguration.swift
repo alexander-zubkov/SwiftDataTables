@@ -96,6 +96,8 @@ public struct DataTableConfiguration: Equatable {
     
     public var fixedColumns: DataTableFixedColumnType? = nil
     
+    public var manualSort: Bool = false
+    
     public init(){
         
     }

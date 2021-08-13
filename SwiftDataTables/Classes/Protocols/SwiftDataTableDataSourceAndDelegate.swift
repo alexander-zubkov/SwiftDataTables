@@ -178,6 +178,11 @@ public protocol SwiftDataTableDataSource: AnyObject {
     /// - Returns: the columns and number of them to be fixed
     @objc optional func fixedColumns(for dataTable: SwiftDataTable) -> DataTableFixedColumnType
     
+    /// If it true user can sort data by column otherwise user can't sort and don't see arrows
+    /// - Parameters:
+    ///   - dataTable: SwiftDataTable
+    /// - Returns: whether you wish to manual sort.
+    @objc optional func manualSort(for dataTable: SwiftDataTable) -> Bool
     
     /// Return `true` to support RTL layouts by flipping horizontal scroll on `CollectionViewFlowLayout`, if the current interface direction is RTL.
     ///

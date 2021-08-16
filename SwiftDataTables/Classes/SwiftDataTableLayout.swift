@@ -304,7 +304,7 @@ extension SwiftDataTableLayout {
         //This should call the delegate method whether or not the headers should float.
         if self.dataTable.shouldSectionHeadersFloat() {
             let yScrollOffsetPosition = self.collectionView!.contentOffset.y
-            attribute.frame.origin.y = yScrollOffsetPosition
+            attribute.frame.origin.y = max(0, yScrollOffsetPosition)
             attribute.zIndex += 1
         }
         return attribute

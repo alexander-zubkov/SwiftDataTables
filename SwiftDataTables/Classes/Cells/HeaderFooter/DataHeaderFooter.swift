@@ -50,6 +50,11 @@ class DataHeaderFooter: UICollectionReusableView {
         addSubview(titleLabel)
         addSubview(sortingImageView)
         
+        let bottomTop = CALayer()
+        bottomTop.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 1)
+        bottomTop.backgroundColor = UIColor.gray.cgColor
+        layer.addSublayer(bottomTop)
+        
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
         bottomLine.backgroundColor = UIColor.gray.cgColor

@@ -56,7 +56,7 @@ class SwiftDataTableLayout: UICollectionViewFlowLayout {
         }
         
         //Reduces the computation by calculating the height offset against one column
-        let defaultUpperHeight = self.dataTable.heightForSectionHeader() / 2
+        let defaultUpperHeight = self.dataTable.heightForSectionHeader()
         
         var counter = 0
         for row in Array(0..<self.dataTable.numberOfRows()){

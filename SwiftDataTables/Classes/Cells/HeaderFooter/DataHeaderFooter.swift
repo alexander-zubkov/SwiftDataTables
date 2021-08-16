@@ -50,20 +50,31 @@ class DataHeaderFooter: UICollectionReusableView {
         addSubview(titleLabel)
         addSubview(sortingImageView)
         
-        let bottomTop = CALayer()
-        bottomTop.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 1)
-        bottomTop.backgroundColor = UIColor.gray.cgColor
-        layer.addSublayer(bottomTop)
+        let metrics = ["width" : NSNumber(value: 1)]
         
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
-        bottomLine.backgroundColor = UIColor.gray.cgColor
-        layer.addSublayer(bottomLine)
+        let topLine = UIView()
+        topLine.backgroundColor = UIColor.gray
+        topLine.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(topLine)
+
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[border]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views:["border" : topLine]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[border(width)]", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : topLine]))
         
-        let bottomRight = CALayer()
-        bottomRight.frame = CGRect(x: self.frame.size.width - 1, y: 0, width: 1, height: self.frame.size.height)
-        bottomRight.backgroundColor = UIColor.gray.cgColor
-        layer.addSublayer(bottomRight)
+        let bottomLine = UIView()
+        bottomLine.backgroundColor = UIColor.gray
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(bottomLine)
+
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[border]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views:["border" : bottomLine]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[border(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : bottomLine]))
+
+        let rightLine = UIView()
+        rightLine.backgroundColor = UIColor.gray
+        rightLine.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(rightLine)
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[border(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views:["border" : rightLine]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[border]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : rightLine]))
         
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(DataHeaderFooter.didTapView))
         addGestureRecognizer(tapGesture)

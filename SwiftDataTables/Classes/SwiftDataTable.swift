@@ -37,6 +37,8 @@ public class SwiftDataTable: UIView {
     public weak var dataSource: SwiftDataTableDataSource?
     public weak var delegate: SwiftDataTableDelegate?
     
+    public var refreshControl: UIRefreshControl?
+    
     public var rows: DataTableViewModelContent {
         return self.currentRowViewModels
     }
@@ -84,6 +86,11 @@ public class SwiftDataTable: UIView {
         } else {
             collectionView.backgroundColor = UIColor.clear
         }
+        
+        refreshControl = UIRefreshControl()
+        collectionView.refreshControl = refreshControl
+        collectionView.alwaysBounceVertical = true
+        
         collectionView.allowsMultipleSelection = true
         collectionView.dataSource = self
         collectionView.delegate = self

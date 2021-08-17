@@ -456,14 +456,14 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         return viewModel.dequeueView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, for: indexPath)
     }
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectItem?(self, indexPath: indexPath)
-        
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
         if let row = currentRow, row == indexPath.section {
             currentRow = nil
         } else {
             currentRow = indexPath.section
         }
+        
+        delegate?.didSelectItem?(self, indexPath: indexPath)
         
         self.update()
     }

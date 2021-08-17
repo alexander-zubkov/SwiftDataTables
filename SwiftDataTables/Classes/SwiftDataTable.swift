@@ -285,15 +285,16 @@ public class SwiftDataTable: UIView {
         }
     }
     
-    public func reloadEverything(){
+    public func reloadEverything() {
         self.layout?.clearLayoutCache()
         self.collectionView.reloadData()
     }
-    public func reloadRowsOnly(){
-        
+    
+    public func reloadRowsOnly() {
+
     }
     
-    public func reload(){
+    public func reload() {
         var data = DataTableContent()
         var headerTitles = [String]()
         
@@ -314,7 +315,7 @@ public class SwiftDataTable: UIView {
             data.append(rowData)
         }
         self.layout?.clearLayoutCache()
-        self.collectionView.resetScrollPositionToTop()
+//        self.collectionView.resetScrollPositionToTop()
         self.set(data: data, headerTitles: headerTitles, options: self.options)
         self.collectionView.reloadData()
     }

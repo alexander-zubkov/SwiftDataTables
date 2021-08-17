@@ -53,7 +53,7 @@ public class SwiftDataTable: UIView {
     var options: DataTableConfiguration
     
     //MARK: - Private Properties
-    private var currentRow: Int? = nil
+    public private(set) var currentRow: Int? = nil
     
     var currentRowViewModels: DataTableViewModelContent {
         get {

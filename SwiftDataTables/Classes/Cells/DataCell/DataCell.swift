@@ -43,7 +43,11 @@ class DataCell: UICollectionViewCell {
         let metrics = ["width" : NSNumber(value: 1)]
         
         let bottomLine = UIView()
-        bottomLine.backgroundColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            bottomLine.backgroundColor = UIColor.systemGray4
+        } else {
+            bottomLine.backgroundColor = UIColor.lightGray
+        }
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(bottomLine)
 
@@ -51,7 +55,11 @@ class DataCell: UICollectionViewCell {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[border(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : bottomLine]))
 
         let rightLine = UIView()
-        rightLine.backgroundColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            rightLine.backgroundColor = UIColor.systemGray4
+        } else {
+            rightLine.backgroundColor = UIColor.lightGray
+        }
         rightLine.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(rightLine)
         

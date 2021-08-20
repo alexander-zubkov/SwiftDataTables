@@ -53,7 +53,11 @@ class DataHeaderFooter: UICollectionReusableView {
         let metrics = ["width" : NSNumber(value: 1)]
         
         let topLine = UIView()
-        topLine.backgroundColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            topLine.backgroundColor = UIColor.systemGray4
+        } else {
+            topLine.backgroundColor = UIColor.lightGray
+        }
         topLine.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(topLine)
 
@@ -61,7 +65,11 @@ class DataHeaderFooter: UICollectionReusableView {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[border(width)]", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : topLine]))
         
         let bottomLine = UIView()
-        bottomLine.backgroundColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            bottomLine.backgroundColor = UIColor.systemGray4
+        } else {
+            bottomLine.backgroundColor = UIColor.lightGray
+        }
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(bottomLine)
 
@@ -69,7 +77,11 @@ class DataHeaderFooter: UICollectionReusableView {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[border(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: metrics, views: ["border" : bottomLine]))
 
         let rightLine = UIView()
-        rightLine.backgroundColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            rightLine.backgroundColor = UIColor.systemGray4
+        } else {
+            rightLine.backgroundColor = UIColor.lightGray
+        }
         rightLine.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(rightLine)
         

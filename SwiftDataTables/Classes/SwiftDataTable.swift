@@ -52,9 +52,9 @@ public class SwiftDataTable: UIView {
     
     var options: DataTableConfiguration
     
-    //MARK: - Private Properties
-    public private(set) var currentRow: Int? = nil
+    public var currentRow: Int? = nil
     
+    //MARK: - Private Properties
     var currentRowViewModels: DataTableViewModelContent {
         get {
             return self.searchRowViewModels

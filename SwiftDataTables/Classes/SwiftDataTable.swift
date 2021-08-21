@@ -443,6 +443,8 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
         if currentRow == indexPath.section {
             cell.contentView.backgroundColor = .lightGray
         }
+        
+        delegate?.willDisplayCell?(_dataTable: self, indexPath: indexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -470,10 +472,6 @@ extension SwiftDataTable: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         delegate?.didDeselectItem?(self, indexPath: indexPath)
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        delegate?.didEndDisplaying?(_dataTable: self, indexPath: indexPath)
     }
 }
 
